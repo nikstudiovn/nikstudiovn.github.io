@@ -1,20 +1,29 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import { STUDIO_CONFIG } from '../data/studio';
 ---
-<BaseLayout title="NiKSign — NiK Studio" active="niksign">
-  <section class="max-w-6xl mx-auto px-4 sm:px-6 pt-12 grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
-    <div>
-      <h1 class="text-3xl sm:text-4xl font-extrabold text-white">NiKSign — iOS IPA Signer</h1>
-      <p class="mt-3 text-slate-300">Lightweight on-device IPA signing app for iOS.</p>
-      <div class="mt-6">
-        {STUDIO_CONFIG.driveLinks.niksign ? (
-          <a href={STUDIO_CONFIG.driveLinks.niksign} target="_blank" rel="noopener noreferrer" class="inline-block px-5 py-2.5 rounded-xl text-sm font-semibold bg-cyan-400 text-slate-950">Google Drive</a>
-        ) : (
-          <span class="inline-block px-4 py-2 rounded-xl text-xs font-mono bg-white/[0.05] border border-white/[0.1] text-slate-400">Google Drive link pending in src/data/studio.ts</span>
-        )}
+<BaseLayout title="Redirecting to XSign — NiK Studio" active="xsign">
+  <meta http-equiv="refresh" content="0;url=/xsign/" />
+  <script is:inline>
+    window.location.replace('/xsign/');
+  </script>
+  <section class="min-h-[60vh] flex items-center justify-center">
+    <div class="liquid-glass rounded-3xl p-8 sm:p-10 max-w-lg w-full text-center space-y-5">
+      <div class="liquid-glass-pill inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-medium text-sky-300">
+        <span class="w-2 h-2 rounded-full bg-sky-400 animate-pulse"></span>
+        <span class="i18n-text" data-vi="Đang chuyển hướng..." data-en="Redirecting...">Đang chuyển hướng...</span>
+      </div>
+      <h1 class="text-2xl sm:text-3xl font-extrabold text-white">
+        <span class="i18n-text" data-vi="NiKSign đã nâng cấp thành XSign" data-en="NiKSign has been upgraded to XSign">NiKSign đã nâng cấp thành XSign</span>
+      </h1>
+      <p class="text-sm sm:text-base text-slate-300 leading-relaxed">
+        <span class="i18n-text" data-vi="Trang này đang tự động chuyển hướng sang XSign. Nếu trình duyệt không tự chuyển, hãy nhấn nút bên dưới." data-en="You are being redirected to XSign automatically. If your browser does not redirect, click the button below.">Trang này đang tự động chuyển hướng sang XSign. Nếu trình duyệt không tự chuyển, hãy nhấn nút bên dưới.</span>
+      </p>
+      <div class="pt-2">
+        <a href="/xsign/" class="liquid-btn-primary inline-flex items-center justify-center gap-2 px-6 py-3 rounded-2xl text-sm font-semibold text-white">
+          <span class="i18n-text" data-vi="Mở XSign ngay" data-en="Open XSign">Mở XSign ngay</span>
+          <span aria-hidden="true">→</span>
+        </a>
       </div>
     </div>
-    <img src={STUDIO_CONFIG.assets.niksign} alt="NiKSign" class="rounded-2xl border border-white/[0.08]" />
   </section>
 </BaseLayout>
