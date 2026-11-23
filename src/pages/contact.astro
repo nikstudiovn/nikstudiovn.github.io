@@ -2,14 +2,96 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { STUDIO_CONFIG } from '../data/studio';
 ---
-<BaseLayout title="Liên hệ — NiK Studio" active="contact">
-  <section class="max-w-4xl mx-auto px-4 sm:px-6 pt-12 space-y-6">
-    <h1 class="text-3xl font-extrabold text-white">Liên hệ & Hợp tác</h1>
-    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-      <a href={STUDIO_CONFIG.socials.telegram} target="_blank" rel="noopener noreferrer" class="p-4 rounded-2xl bg-surface border border-white/[0.08] hover:border-cyan-400/40">Telegram: @nikvn21</a>
-      <a href={STUDIO_CONFIG.socials.tiktok} target="_blank" rel="noopener noreferrer" class="p-4 rounded-2xl bg-surface border border-white/[0.08] hover:border-cyan-400/40">TikTok: @iamnik.21</a>
-      <a href={STUDIO_CONFIG.socials.facebook} target="_blank" rel="noopener noreferrer" class="p-4 rounded-2xl bg-surface border border-white/[0.08] hover:border-cyan-400/40">Facebook: NiK</a>
-      <a href={STUDIO_CONFIG.socials.github} target="_blank" rel="noopener noreferrer" class="p-4 rounded-2xl bg-surface border border-white/[0.08] hover:border-cyan-400/40">GitHub: nikstudiovn</a>
+<BaseLayout title="Contact — NiK Studio" active="contact">
+  <section class="space-y-8">
+    <div class="space-y-3">
+      <div class="liquid-glass-pill inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-medium text-sky-300">
+        <span class="w-2 h-2 rounded-full bg-sky-400"></span>
+        <span class="i18n-text" data-vi="Kết nối" data-en="Connect">Kết nối</span>
+      </div>
+      <h1 class="text-3xl sm:text-5xl font-extrabold tracking-tight text-white">
+        <span class="i18n-text" data-vi="Liên hệ & Hợp tác" data-en="Contact & Collaboration">Liên hệ & Hợp tác</span>
+      </h1>
+      <p class="text-slate-300 max-w-2xl text-sm sm:text-base">
+        <span class="i18n-text" data-vi="Kết nối trực tiếp với NiK Studio qua các kênh chính thức bên dưới để trao đổi về phần mềm, thiết kế âm thanh hoặc hợp tác dự án." data-en="Reach out to NiK Studio through the official channels below for software, audio engineering, or project collaborations.">Kết nối trực tiếp với NiK Studio qua các kênh chính thức bên dưới để trao đổi về phần mềm, thiết kế âm thanh hoặc hợp tác dự án.</span>
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+      <a
+        href={STUDIO_CONFIG.socials.telegram}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="liquid-glass rounded-3xl p-6 flex items-center justify-between gap-4 hover:border-sky-400/40 transition-all group"
+      >
+        <div class="space-y-1">
+          <div class="flex items-center gap-2">
+            <span class="text-lg font-bold text-white group-hover:text-sky-300 transition-colors">Telegram</span>
+            <span class="liquid-glass-pill px-2.5 py-0.5 rounded-full text-[11px] font-medium text-sky-300">
+              <span class="i18n-text" data-vi="Nhanh nhất" data-en="Fastest">Nhanh nhất</span>
+            </span>
+          </div>
+          <p class="text-sm font-mono text-slate-300">@nikvn21</p>
+          <p class="text-xs text-slate-400">
+            <span class="i18n-text" data-vi="Hỗ trợ & trao đổi trực tiếp" data-en="Direct support & messaging">Hỗ trợ & trao đổi trực tiếp</span>
+          </p>
+        </div>
+        <span class="liquid-btn w-10 h-10 rounded-2xl flex items-center justify-center text-slate-200 group-hover:text-white" aria-hidden="true">↗</span>
+      </a>
+
+      <a
+        href={STUDIO_CONFIG.socials.tiktok}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="liquid-glass rounded-3xl p-6 flex items-center justify-between gap-4 hover:border-pink-400/40 transition-all group"
+      >
+        <div class="space-y-1">
+          <div class="flex items-center gap-2">
+            <span class="text-lg font-bold text-white group-hover:text-pink-300 transition-colors">TikTok</span>
+          </div>
+          <p class="text-sm font-mono text-slate-300">@iamnik.21</p>
+          <p class="text-xs text-slate-400">
+            <span class="i18n-text" data-vi="Video âm nhạc & hậu trường" data-en="Music clips & behind the scenes">Video âm nhạc & hậu trường</span>
+          </p>
+        </div>
+        <span class="liquid-btn w-10 h-10 rounded-2xl flex items-center justify-center text-slate-200 group-hover:text-white" aria-hidden="true">↗</span>
+      </a>
+
+      <a
+        href={STUDIO_CONFIG.socials.facebook}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="liquid-glass rounded-3xl p-6 flex items-center justify-between gap-4 hover:border-blue-400/40 transition-all group"
+      >
+        <div class="space-y-1">
+          <div class="flex items-center gap-2">
+            <span class="text-lg font-bold text-white group-hover:text-blue-300 transition-colors">Facebook</span>
+          </div>
+          <p class="text-sm font-mono text-slate-300">NiK</p>
+          <p class="text-xs text-slate-400">
+            <span class="i18n-text" data-vi="Cập nhật & cộng đồng" data-en="Updates & community">Cập nhật & cộng đồng</span>
+          </p>
+        </div>
+        <span class="liquid-btn w-10 h-10 rounded-2xl flex items-center justify-center text-slate-200 group-hover:text-white" aria-hidden="true">↗</span>
+      </a>
+
+      <a
+        href={STUDIO_CONFIG.socials.github}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="liquid-glass rounded-3xl p-6 flex items-center justify-between gap-4 hover:border-purple-400/40 transition-all group"
+      >
+        <div class="space-y-1">
+          <div class="flex items-center gap-2">
+            <span class="text-lg font-bold text-white group-hover:text-purple-300 transition-colors">GitHub</span>
+          </div>
+          <p class="text-sm font-mono text-slate-300">nikstudiovn</p>
+          <p class="text-xs text-slate-400">
+            <span class="i18n-text" data-vi="Mã nguồn mở & phát hành" data-en="Open source & releases">Mã nguồn mở & phát hành</span>
+          </p>
+        </div>
+        <span class="liquid-btn w-10 h-10 rounded-2xl flex items-center justify-center text-slate-200 group-hover:text-white" aria-hidden="true">↗</span>
+      </a>
     </div>
   </section>
 </BaseLayout>
