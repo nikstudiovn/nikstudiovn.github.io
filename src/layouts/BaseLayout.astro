@@ -11,7 +11,6 @@ const { title = 'NiK Studio — iOS Tools & Music', active = 'home' } = Astro.pr
 const navItems = [
   { id: 'home', href: '/', vi: 'Trang chủ', en: 'Home' },
   { id: 'xsign', href: '/xsign', vi: 'XSign', en: 'XSign' },
-  { id: 'music', href: '/music', vi: 'Âm nhạc', en: 'Music' },
   { id: 'contact', href: '/contact', vi: 'Liên hệ', en: 'Contact' },
 ];
 ---
@@ -142,14 +141,9 @@ const navItems = [
         <div class="flex items-center gap-2.5">
           <span class="w-2 h-2 rounded-full bg-cyan-400 shadow-[0_0_10px_rgba(34,211,238,0.8)]"></span>
           <span>© {new Date().getFullYear()} {STUDIO_CONFIG.brand}</span>
-          <span class="text-slate-500">•</span>
-          <span class="text-slate-400 i18n-text" data-vi="Thiết kế theo phong cách Dark Liquid Glass" data-en="Crafted in Dark Liquid Glass">
-            Thiết kế theo phong cách Dark Liquid Glass
-          </span>
         </div>
         <div class="flex items-center gap-4 text-slate-300">
           <a href="/xsign" class="hover:text-cyan-300 transition-colors">XSign</a>
-          <a href="/music" class="hover:text-cyan-300 transition-colors i18n-text" data-vi="Âm nhạc" data-en="Music">Âm nhạc</a>
           <a href={STUDIO_CONFIG.socials.telegram} target="_blank" rel="noopener noreferrer" class="hover:text-cyan-300 transition-colors">Telegram</a>
           <a href={STUDIO_CONFIG.socials.github} target="_blank" rel="noopener noreferrer" class="hover:text-cyan-300 transition-colors">GitHub</a>
         </div>
