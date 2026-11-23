@@ -44,9 +44,9 @@ import { STUDIO_CONFIG } from '../data/studio';
   </section>
 
   <!-- Bento Grid Products -->
-  <section class="grid grid-cols-1 md:grid-cols-12 gap-6">
+  <section class="grid grid-cols-1 md:grid-cols-2 gap-6">
     <!-- XSign Featured Card -->
-    <a href="/xsign" class="md:col-span-12 lg:col-span-7 liquid-glass rounded-[2rem] p-5 sm:p-7 group hover:border-cyan-300/40 transition-all flex flex-col justify-between">
+    <a href="/xsign" class="liquid-glass rounded-[2rem] p-5 sm:p-7 group hover:border-cyan-300/40 transition-all flex flex-col justify-between">
       <div>
         <div class="flex items-center justify-between gap-3 mb-4">
           <span class="px-3 py-1 rounded-full text-xs font-semibold bg-emerald-400/15 text-emerald-300 border border-emerald-400/30 i18n-text"
@@ -84,37 +84,10 @@ import { STUDIO_CONFIG } from '../data/studio';
       </div>
     </a>
 
-    <!-- Right Column: NiK Music + VIX -->
-    <div class="md:col-span-12 lg:col-span-5 flex flex-col gap-6">
-      <!-- NiK Music -->
-      <a href="/music" class="liquid-glass rounded-[2rem] p-5 sm:p-6 group hover:border-purple-300/40 transition-all flex-1 flex flex-col justify-between">
-        <div class="flex items-center justify-between gap-3 mb-4">
-          <span class="px-3 py-1 rounded-full text-xs font-semibold bg-purple-400/15 text-purple-200 border border-purple-400/30 i18n-text"
-                data-vi="Âm nhạc" data-en="Music">
-            Âm nhạc
-          </span>
-          <span class="text-xs font-mono text-slate-300">138 BPM</span>
-        </div>
 
-        <div class="flex items-center gap-4">
-          <img src={STUDIO_CONFIG.assets.music} alt="NiK Music" class="w-20 h-20 rounded-2xl object-cover border border-white/15 shrink-0" />
-          <div>
-            <h2 class="text-lg sm:text-xl font-bold text-white group-hover:text-purple-200 transition-colors">NiK Music</h2>
-            <p class="mt-1 text-xs sm:text-sm text-slate-300 i18n-text"
-               data-vi="Kho remix & sản xuất âm thanh điện tử — La La Love On My Mind 138 BPM."
-               data-en="Electronic remixes & audio production — La La Love On My Mind 138 BPM.">
-              Kho remix & sản xuất âm thanh điện tử — La La Love On My Mind 138 BPM.
-            </p>
-          </div>
-        </div>
-
-        <div class="mt-4 flex items-center justify-end text-xs font-semibold text-purple-200 group-hover:translate-x-1 transition-transform">
-          <span class="i18n-text" data-vi="Nghe ngay →" data-en="Listen now →">Nghe ngay →</span>
-        </div>
-      </a>
 
       <!-- VIX / VIX MAX (In Development, non-product link) -->
-      <div class="liquid-glass rounded-[2rem] p-5 sm:p-6 opacity-90 flex-1 flex flex-col justify-between">
+      <div class="liquid-glass rounded-[2rem] p-5 sm:p-7 opacity-90 flex flex-col justify-center gap-6">
         <div class="flex items-center justify-between gap-3 mb-4">
           <span class="px-3 py-1 rounded-full text-xs font-semibold bg-amber-400/15 text-amber-200 border border-amber-400/30 i18n-text"
                 data-vi="Đang phát triển" data-en="In Development">
@@ -135,6 +108,5 @@ import { STUDIO_CONFIG } from '../data/studio';
           </div>
         </div>
       </div>
-    </div>
   </section>
 </BaseLayout>
