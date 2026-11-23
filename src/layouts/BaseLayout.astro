@@ -1,96 +1,186 @@
 ---
 import { STUDIO_CONFIG } from '../data/studio';
+
 interface Props {
   title?: string;
-  active?: 'home' | 'vix' | 'niksign' | 'music' | 'contact';
+  active?: 'home' | 'xsign' | 'music' | 'contact' | 'vix';
 }
-const { title = 'NiK Studio — Audio DSP & iOS Tools', active = 'home' } = Astro.props;
+
+const { title = 'NiK Studio — iOS Tools & Music', active = 'home' } = Astro.props;
+
 const navItems = [
   { id: 'home', href: '/', vi: 'Trang chủ', en: 'Home' },
-  { id: 'vix', href: '/vix', vi: 'VIX VST3', en: 'VIX VST3' },
-  { id: 'niksign', href: '/niksign', vi: 'NiKSign', en: 'NiKSign' },
+  { id: 'xsign', href: '/xsign', vi: 'XSign', en: 'XSign' },
   { id: 'music', href: '/music', vi: 'Âm nhạc', en: 'Music' },
-  { id: 'contact', href: '/contact', vi: 'Liên hệ', en: 'Contact' }
+  { id: 'contact', href: '/contact', vi: 'Liên hệ', en: 'Contact' },
 ];
 ---
+
 <!doctype html>
 <html lang="vi" class="dark">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{title}</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+    <style is:global>
+      :root {
+        color-scheme: dark;
+      }
+      body {
+        background-color: #05070e;
+        font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Inter', system-ui, sans-serif;
+      }
+      .liquid-glass {
+        position: relative;
+        background: linear-gradient(155deg, rgba(255, 255, 255, 0.11) 0%, rgba(255, 255, 255, 0.04) 48%, rgba(255, 255, 255, 0.07) 100%);
+        backdrop-filter: blur(28px) saturate(180%);
+        -webkit-backdrop-filter: blur(28px) saturate(180%);
+        border: 1px solid rgba(255, 255, 255, 0.16);
+        box-shadow:
+          inset 0 1px 0 rgba(255, 255, 255, 0.28),
+          inset 0 -1px 0 rgba(255, 255, 255, 0.05),
+          0 20px 50px rgba(0, 0, 0, 0.48);
+      }
+      .liquid-glass-pill {
+        background: linear-gradient(180deg, rgba(255, 255, 255, 0.12) 0%, rgba(255, 255, 255, 0.05) 100%);
+        backdrop-filter: blur(28px) saturate(190%);
+        -webkit-backdrop-filter: blur(28px) saturate(190%);
+        border: 1px solid rgba(255, 255, 255, 0.18);
+        box-shadow:
+          inset 0 1px 0 rgba(255, 255, 255, 0.32),
+          0 16px 40px rgba(0, 0, 0, 0.5);
+      }
+      .liquid-btn {
+        background: linear-gradient(180deg, rgba(255, 255, 255, 0.14) 0%, rgba(255, 255, 255, 0.06) 100%);
+        backdrop-filter: blur(18px) saturate(160%);
+        -webkit-backdrop-filter: blur(18px) saturate(160%);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.3), 0 8px 24px rgba(0, 0, 0, 0.3);
+        transition: all 0.22s cubic-bezier(0.22, 1, 0.36, 1);
+      }
+      .liquid-btn:hover {
+        background: linear-gradient(180deg, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0.09) 100%);
+        border-color: rgba(255, 255, 255, 0.32);
+        transform: translateY(-1px);
+      }
+      .liquid-btn-primary {
+        background: linear-gradient(135deg, rgba(56, 189, 248, 0.92) 0%, rgba(59, 130, 246, 0.92) 55%, rgba(139, 92, 246, 0.9) 100%);
+        border: 1px solid rgba(255, 255, 255, 0.38);
+        box-shadow:
+          inset 0 1px 0 rgba(255, 255, 255, 0.5),
+          0 12px 32px rgba(56, 189, 248, 0.32);
+        transition: all 0.22s cubic-bezier(0.22, 1, 0.36, 1);
+      }
+      .liquid-btn-primary:hover {
+        filter: brightness(1.08);
+        transform: translateY(-1px);
+        box-shadow:
+          inset 0 1px 0 rgba(255, 255, 255, 0.6),
+          0 16px 38px rgba(56, 189, 248, 0.42);
+      }
+    </style>
   </head>
-  <body class="min-h-screen flex flex-col bg-obsidian text-slate-50 font-sans antialiased">
-    <header class="sticky top-0 z-40 bg-obsidian/75 backdrop-blur-xl border-b border-white/[0.06]">
-      <div class="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between gap-4">
-        <a href="/" class="flex items-center gap-2.5 group shrink-0">
-          <span class="w-8 h-8 rounded-xl bg-gradient-to-br from-cyan-400/90 to-blue-600 flex items-center justify-center ring-1 ring-white/20">
-            <svg class="w-4 h-4 text-slate-950" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-              <path d="M2 12h3l2.5-7 4 14 3.5-10 2.5 3H22" />
+  <body class="min-h-screen flex flex-col text-slate-50 antialiased selection:bg-cyan-400/30 selection:text-white overflow-x-hidden">
+    <!-- Ambient Mesh Gradient Background -->
+    <div class="fixed inset-0 -z-10 pointer-events-none overflow-hidden bg-[#05070e]">
+      <div class="absolute -top-40 -left-32 w-[36rem] h-[36rem] rounded-full bg-blue-600/25 blur-[130px]"></div>
+      <div class="absolute top-1/4 -right-32 w-[34rem] h-[34rem] rounded-full bg-purple-600/22 blur-[140px]"></div>
+      <div class="absolute -bottom-40 left-1/3 w-[38rem] h-[38rem] rounded-full bg-cyan-500/20 blur-[140px]"></div>
+      <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(255,255,255,0.04),transparent_60%)]"></div>
+    </div>
+
+    <!-- Floating Glass Pill Navbar -->
+    <header class="sticky top-4 z-40 px-4 sm:px-6">
+      <div class="max-w-5xl mx-auto liquid-glass-pill rounded-full px-3 sm:px-5 h-14 sm:h-16 flex items-center justify-between gap-2 sm:gap-4">
+        <a href="/" class="flex items-center gap-2.5 shrink-0 pl-1 group">
+          <span class="w-8 h-8 rounded-full bg-gradient-to-br from-cyan-400 via-blue-500 to-purple-500 flex items-center justify-center shadow-lg shadow-cyan-500/25 border border-white/30">
+            <svg class="w-4 h-4 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+              <path d="M12 2L4 7v10l8 5 8-5V7l-8-5z" />
             </svg>
           </span>
-          <span class="font-bold tracking-tight text-white text-base group-hover:text-cyan-300 transition-colors">{STUDIO_CONFIG.brand}</span>
+          <span class="font-semibold tracking-tight text-sm sm:text-base text-white group-hover:text-cyan-200 transition-colors">
+            {STUDIO_CONFIG.brand}
+          </span>
         </a>
 
-        <nav class="hidden md:flex items-center gap-1 bg-white/[0.03] px-1.5 py-1 rounded-full border border-white/[0.07]">
-          {navItems.map((item) => (
-            <a
-              href={item.href}
-              data-vi={item.vi}
-              data-en={item.en}
-              class={`i18n-text px-3.5 py-1.5 rounded-full text-xs font-medium tracking-wide transition-all ${
-                active === item.id
-                  ? 'bg-cyan-400/15 text-cyan-300 ring-1 ring-cyan-400/30 font-semibold'
-                  : 'text-slate-400 hover:text-white hover:bg-white/[0.05]'
-              }`}
-            >
-              {item.vi}
-            </a>
-          ))}
+        <nav class="flex items-center gap-1 sm:gap-1.5 overflow-x-auto no-scrollbar">
+          {navItems.map((item) => {
+            const isActive = active === item.id;
+            return (
+              <a
+                href={item.href}
+                class={`px-3 sm:px-4 py-1.5 rounded-full text-xs sm:text-sm font-medium whitespace-nowrap transition-all ${
+                  isActive
+                    ? 'bg-white/20 text-white border border-white/25 shadow-[inset_0_1px_0_rgba(255,255,255,0.35)]'
+                    : 'text-slate-300 hover:text-white hover:bg-white/10'
+                }`}
+              >
+                <span class="i18n-text" data-vi={item.vi} data-en={item.en}>{item.vi}</span>
+              </a>
+            );
+          })}
         </nav>
 
-        <button id="langToggle" type="button" class="px-3 py-1.5 rounded-full text-[11px] font-mono font-medium bg-white/[0.04] border border-white/[0.08] text-slate-300 hover:border-cyan-400/50 hover:text-cyan-300 transition-all">
-          VI / EN
+        <button
+          id="langToggle"
+          type="button"
+          class="shrink-0 px-3 py-1.5 rounded-full text-xs font-semibold tracking-wide text-cyan-100 bg-white/10 hover:bg-white/20 border border-white/20 transition-all cursor-pointer"
+          aria-label="Toggle language"
+        >
+          VI → EN
         </button>
       </div>
     </header>
 
-    <main class="flex-1">
+    <main class="flex-1 w-full max-w-6xl mx-auto px-4 sm:px-6 py-8 sm:py-12">
       <slot />
     </main>
 
-    <footer class="border-t border-white/[0.06] bg-obsidian/90 mt-16">
-      <div class="max-w-6xl mx-auto px-4 sm:px-6 py-8 flex flex-col sm:flex-row items-center justify-between gap-4">
-        <p class="text-xs text-slate-400">© 2026 {STUDIO_CONFIG.brand} ({STUDIO_CONFIG.domain})</p>
-        <div class="flex flex-wrap gap-2">
-          <a href={STUDIO_CONFIG.socials.tiktok} target="_blank" rel="noopener noreferrer" class="px-3 py-1.5 rounded-lg text-xs bg-white/[0.04] border border-white/[0.08] text-slate-300 hover:text-cyan-300">TikTok</a>
-          <a href={STUDIO_CONFIG.socials.facebook} target="_blank" rel="noopener noreferrer" class="px-3 py-1.5 rounded-lg text-xs bg-white/[0.04] border border-white/[0.08] text-slate-300 hover:text-cyan-300">Facebook</a>
-          <a href={STUDIO_CONFIG.socials.telegram} target="_blank" rel="noopener noreferrer" class="px-3 py-1.5 rounded-lg text-xs bg-white/[0.04] border border-white/[0.08] text-slate-300 hover:text-cyan-300">Telegram</a>
-          <a href={STUDIO_CONFIG.socials.github} target="_blank" rel="noopener noreferrer" class="px-3 py-1.5 rounded-lg text-xs bg-white/[0.04] border border-white/[0.08] text-slate-300 hover:text-cyan-300">GitHub</a>
+    <!-- Frosted Glass Footer -->
+    <footer class="px-4 sm:px-6 pb-6 pt-4">
+      <div class="max-w-5xl mx-auto liquid-glass rounded-3xl px-5 sm:px-7 py-5 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs sm:text-sm text-slate-300">
+        <div class="flex items-center gap-2.5">
+          <span class="w-2 h-2 rounded-full bg-cyan-400 shadow-[0_0_10px_rgba(34,211,238,0.8)]"></span>
+          <span>© {new Date().getFullYear()} {STUDIO_CONFIG.brand}</span>
+          <span class="text-slate-500">•</span>
+          <span class="text-slate-400 i18n-text" data-vi="Thiết kế theo phong cách Dark Liquid Glass" data-en="Crafted in Dark Liquid Glass">
+            Thiết kế theo phong cách Dark Liquid Glass
+          </span>
+        </div>
+        <div class="flex items-center gap-4 text-slate-300">
+          <a href="/xsign" class="hover:text-cyan-300 transition-colors">XSign</a>
+          <a href="/music" class="hover:text-cyan-300 transition-colors i18n-text" data-vi="Âm nhạc" data-en="Music">Âm nhạc</a>
+          <a href={STUDIO_CONFIG.socials.telegram} target="_blank" rel="noopener noreferrer" class="hover:text-cyan-300 transition-colors">Telegram</a>
+          <a href={STUDIO_CONFIG.socials.github} target="_blank" rel="noopener noreferrer" class="hover:text-cyan-300 transition-colors">GitHub</a>
         </div>
       </div>
     </footer>
 
     <script is:inline>
       (function () {
-        let lang = localStorage.getItem('nikstudio_lang') || 'vi';
-        function applyLang() {
+        const STORAGE_KEY = 'nikstudio_lang';
+        function applyLang(lang) {
+          document.documentElement.lang = lang;
           document.querySelectorAll('.i18n-text').forEach((el) => {
-            const txt = el.getAttribute('data-' + lang);
-            if (txt) el.textContent = txt;
+            const text = el.getAttribute(lang === 'en' ? 'data-en' : 'data-vi');
+            if (text !== null) el.textContent = text;
           });
           const btn = document.getElementById('langToggle');
-          if (btn) btn.textContent = lang === 'vi' ? 'VI → EN' : 'EN → VI';
+          if (btn) {
+            btn.textContent = lang === 'vi' ? 'VI → EN' : 'EN → VI';
+          }
         }
-        document.getElementById('langToggle')?.addEventListener('click', () => {
-          lang = lang === 'vi' ? 'en' : 'vi';
-          localStorage.setItem('nikstudio_lang', lang);
-          applyLang();
-        });
-        applyLang();
+        const saved = localStorage.getItem(STORAGE_KEY) || 'vi';
+        applyLang(saved);
+        const btn = document.getElementById('langToggle');
+        if (btn) {
+          btn.addEventListener('click', () => {
+            const current = localStorage.getItem(STORAGE_KEY) || 'vi';
+            const next = current === 'vi' ? 'en' : 'vi';
+            localStorage.setItem(STORAGE_KEY, next);
+            applyLang(next);
+          });
+        }
       })();
     </script>
   </body>
